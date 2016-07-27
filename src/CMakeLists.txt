@@ -1,5 +1,8 @@
+set(MY_PROJ_NAME dsn.tools.hpc)
+
 if (DEFINED DSN_CMAKE_INCLUDED)
 else()
+    project(${MY_PROJ_NAME} C CXX)
     set(DSN_ROOT "$ENV{DSN_ROOT}")
     if(NOT EXISTS "${DSN_ROOT}/")
         message(FATAL_ERROR "Please make sure that ${DSN_ROOT} exists.")
@@ -7,8 +10,6 @@ else()
 
     include("${DSN_ROOT}/bin/dsn.cmake")
 endif()
-
-set(MY_PROJ_NAME dsn.tools.hpc)
 
 # Source files under CURRENT project directory will be automatically included.
 # You can manually set MY_PROJ_SRC to include source files under other directories.
@@ -29,6 +30,5 @@ set(MY_PROJ_LIB_PATH "")
 set(MY_BINPLACES "")
 
 dsn_add_shared_library()
-add_dependencies(${MY_PROJ_NAME} concurrentqueue)
 
 file(COPY test/ DESTINATION "${CMAKE_BINARY_DIR}/test/${MY_PROJ_NAME}")
