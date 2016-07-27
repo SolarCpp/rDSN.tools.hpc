@@ -1,7 +1,5 @@
 if (DEFINED DSN_CMAKE_INCLUDED)
 else()
-    cmake_minimum_required(VERSION 2.8.8)
-
     set(DSN_ROOT "$ENV{DSN_ROOT}")
     if(NOT EXISTS "${DSN_ROOT}/")
         message(FATAL_ERROR "Please make sure that ${DSN_ROOT} exists.")
@@ -21,9 +19,7 @@ set(MY_PROJ_SRC "")
 # "GLOB" for non-recursive search
 set(MY_SRC_SEARCH_MODE "GLOB")
 
-set(MY_PROJ_INC_PATH ${GTEST_INCLUDE_DIR}
-                     ${CONQUEUE_INCLUDE_DIRS}
-)
+set(MY_PROJ_INC_PATH "../ext/concurrentqueue")
 
 set(MY_PROJ_LIBS gtest)
 
