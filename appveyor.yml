@@ -21,6 +21,8 @@ build_script:
         del .\main\build\CMakeCache.txt
         
         main\run.cmd build Debug .\main\build
+
+        main\run.cmd install Debug .\main\build
         
 test_script:
     - cmd: >-
