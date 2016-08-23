@@ -93,10 +93,10 @@ namespace dsn
             ::dsn::register_command("tail-log", 
                 "tail-log keyword back-seconds [back-start-seconds = 0] [tid1,tid2,...]", 
                 "tail-log find logs with given keyword and within [now - back-seconds, now - back-start-seconds]",
-                [this](const std::vector<std::string>& args)
+                [this](const safe_vector<safe_string>& args)
                 {
                     if (args.size() < 2)
-                        return std::string("invalid arguments for tail-log command");
+                        return safe_string("invalid arguments for tail-log command");
                     else
                     {
                         std::unordered_set<int> target_threads;
@@ -110,12 +110,12 @@ namespace dsn
                             }
                         }
 
-                        return this->search(
+                        return safe_string(this->search(
                             args[0].c_str(),
                             atoi(args[1].c_str()),
                             args.size() >= 3 ? atoi(args[2].c_str()) : 0,
                             target_threads
-                            );
+                            ).c_str());
                     }
                 }
             );
@@ -123,10 +123,10 @@ namespace dsn
             ::dsn::register_command("tail-log-dump",
                 "tail-log-dump",
                 "tail-log-dump dump all tail logs to log files",
-                [this](const std::vector<std::string>& args)
+                [this](const safe_vector<safe_string>& args)
                 {
                     hpc_tail_logs_dumpper();
-                    return std::string("logs are dumped to coredurmp dir started with hpc_tail_logs.xxx.log");
+                    return safe_string("logs are dumped to coredurmp dir started with hpc_tail_logs.xxx.log");
                 }
             );
         }
