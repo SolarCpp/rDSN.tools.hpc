@@ -70,8 +70,8 @@ namespace dsn
 
         static __thread struct __tail_log_info__ s_tail_log_info;
         
-        hpc_tail_logger::hpc_tail_logger(const char* log_dir) 
-            : logging_provider(log_dir)
+        hpc_tail_logger::hpc_tail_logger(const char* log_dir, logging_provider* inner)
+            : logging_provider(log_dir, inner)
         {
             _log_dir = std::string(log_dir);
             _per_thread_buffer_bytes = (int)dsn_config_get_value_uint64(

@@ -138,8 +138,8 @@ namespace dsn
             write_buffer_list(saved_list);
         }
 
-        hpc_logger::hpc_logger(const char* log_dir) 
-            : logging_provider(log_dir), _stop_thread(false), _exiting(false)
+        hpc_logger::hpc_logger(const char* log_dir, logging_provider* inner) 
+            : logging_provider(log_dir, inner), _stop_thread(false), _exiting(false)
         {
             _log_dir = std::string(log_dir);
             _per_thread_buffer_bytes = (int)dsn_config_get_value_uint64(

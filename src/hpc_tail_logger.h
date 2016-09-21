@@ -44,7 +44,7 @@ namespace dsn {
         class hpc_tail_logger : public logging_provider
         {
         public:
-            hpc_tail_logger(const char* log_dir);
+            hpc_tail_logger(const char* log_dir, logging_provider* inner);
             virtual ~hpc_tail_logger(void);
 
             virtual void dsn_logv(const char *file,
