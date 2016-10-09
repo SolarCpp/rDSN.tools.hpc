@@ -14,11 +14,8 @@ rDSN.tools.hpc is a collection of high performance local library providers for r
 * make sure rDSN is [installed](https://github.com/Microsoft/rDSN/wiki/Installation)
 * build dsn.tools.hpc.so (Linux) or dsn.tools.hpc.dll (Windows)
 ```
-    mkdir build
-    cd build
-    cmake ..
-    make 
-    make install 
+    dsn.run.sh build --type release
+    dsn.run.sh install
 ```
 
   The last command copies the dynamic linked libraries into ```DSN_ROOT/lib```.
