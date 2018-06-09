@@ -11,7 +11,7 @@ set(MY_SRC_SEARCH_MODE "GLOB")
 
 set(MY_PROJ_INC_PATH "../ext/concurrentqueue")
 
-set(MY_PROJ_LIBS gtest)
+set(MY_PROJ_LIBS GTest::GTest)
 
 set(MY_PROJ_LIB_PATH "")
 
